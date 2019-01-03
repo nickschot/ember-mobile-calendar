@@ -1,0 +1,40 @@
+{{#basic-dropdown as |dropdown|}}
+  <div class="ember-power-calendar-input">
+    <input type="text"
+           data-ebd-id="{{dropdown.uniqueId}}-trigger"
+           class="form-control {{formFeedbackClass}}"
+           onclick={{dropdown.actions.toggle}}
+           value={{if _value (moment-format _value dateFormat)}}
+           id={{id}}
+           readonly>
+
+    {{#if _value}}
+      <div class="ember-power-calendar-clear-btn" {{action 'onSelect' dropdown.actions.close null}}>×</div>
+    {{/if}}
+  </div>
+
+  {{#dropdown.content class="ember-power-calendar-dropdown"}}
+    {{!--to-elsewhere named='mask' send=(component 'app-mask' class='d-sm-none' onClick=dropdown.actions.close)--}}
+
+    {{#power-calendar center=center
+                      onCenterChange=(action (mut center) value="date")
+                      selected=_value
+                      onSelect=(action 'select' dropdown.actions.close)
+    as |calendar|}}
+      <nav class="ember-power-calendar-nav">
+        <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -12 'month'}}>&laquo;</button>
+        <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>&lsaquo;</button>
+        <div class="ember-power-calendar-nav-title">
+          {{moment-format calendar.center 'MMMM YYYY'}}
+        </div>
+        <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>&rsaquo;</button>
+        <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 12 'month'}}>&raquo;</button>
+      </nav>
+
+      {{calendar.days
+        minDate=minDate
+        maxDate=maxDate
+      }}
+    {{/power-calendar}}
+  {{/dropdown.content}}
+{{/basic-dropdown}}
