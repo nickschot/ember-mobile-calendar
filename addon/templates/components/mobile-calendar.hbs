@@ -31,10 +31,30 @@
         <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 12 "month"}}>&raquo;</button>
       </nav>
 
-      {{calendar.days
-        minDate=minDate
-        maxDate=maxDate
-      }}
+      {{#mobile-pane
+        onDragEnd=(action "changeCenter")
+      as |mp|}}
+        {{#mp.infinite-scroller
+          previousModel=previousCenter
+          currentModel=(hash date=_center)
+          nextModel=nextCenter
+          transitionAfterDrag=false
+        as |mpis|}}
+          {{#if mpis.isCurrentModel}}
+            {{calendar.days
+              minDate=minDate
+              maxDate=maxDate
+            }}
+          {{else}}
+            {{#power-calendar center=mpis.model.date selected=_value as |subCalendar|}}
+              {{subCalendar.days
+                minDate=minDate
+                maxDate=maxDate
+              }}
+            {{/power-calendar}}
+          {{/if}}
+        {{/mp.infinite-scroller}}
+      {{/mobile-pane}}
     {{/power-calendar}}
   {{/dropdown.content}}
 {{/basic-dropdown}}
