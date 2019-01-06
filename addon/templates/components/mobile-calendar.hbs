@@ -34,6 +34,9 @@
       </nav>
 
       {{#mobile-pane
+        strictLazyRendering=true
+        keepRendered=true
+        strictLazyRenderingDeadZone=0
         onDragEnd=(action "changeCenter")
       as |mp|}}
         {{#mp.infinite-scroller
