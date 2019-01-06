@@ -2,27 +2,46 @@
 @import "ember-power-calendar";
 @import "ember-mobile-pane";
 
+@import "ember-mobile-calendar/variables";
+
 $primary: blue;
 $link-color: purple;
 
 
-.ember-power-calendar-input {
+.ember-mobile-calendar-trigger {
+  display: inline-block;
   position: relative;
 
   input {
     padding-right: 25px;
+
+    border-top: $ember-mobile-calendar-trigger-border-top;
+    border-bottom: $ember-mobile-calendar-trigger-border-bottom;
+    border-right: $ember-mobile-calendar-trigger-border-right;
+    border-left: $ember-mobile-calendar-trigger-border-left;
+    border-radius: $ember-mobile-calendar-trigger-default-border-radius;
+    background-color: $ember-mobile-calendar-background-color;
+    line-height: $ember-mobile-calendar-line-height;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    @if unitless($ember-mobile-calendar-line-height) {
+      min-height: #{$ember-mobile-calendar-line-height}em;
+    } @else {
+      min-height: $ember-mobile-calendar-line-height;
+    }
+    color: $ember-mobile-calendar-text-color;
   }
 
-  .ember-power-calendar-clear-btn {
+  .ember-mobile-calendar-clear-btn {
     position: absolute;
-    right: 10px!important;
-    top : 5px;
+    right: 8px!important;
+    top : 2px;
     cursor: pointer;
   }
 }
 
 
-.ember-power-calendar-dropdown {
+.ember-mobile-calendar-dropdown {
   // amount of day rows can be either 5 or 6, make sure it doesn't jump around by calculating correct min-height
   min-height: (36px + 2px) * 7 + 38px;
 
@@ -39,6 +58,11 @@ $link-color: purple;
 
   .ember-power-calendar-nav-title {
     line-height: 36px;
+  }
+
+  .ember-power-calendar-days {
+    padding-left: 2px;
+    padding-right: 2px;
   }
 
   /*@include media-breakpoint-only(xs){

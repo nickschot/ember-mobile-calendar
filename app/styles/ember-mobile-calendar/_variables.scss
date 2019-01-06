@@ -1,0 +1,31 @@
+// Backgrounds
+$ember-mobile-calendar-background-color: #ffffff !default;
+$ember-mobile-calendar-disabled-background-color: #eeeeee !default;
+$ember-mobile-calendar-multiple-selection-background-color: #e4e4e4 !default;
+$ember-mobile-calendar-highlighted-background: #5897fb !default;
+$ember-mobile-calendar-selected-background: #dddddd !default;
+
+// Texts
+$ember-mobile-calendar-text-color: inherit !default;
+$ember-mobile-calendar-placeholder-color: #999999 !default;
+$ember-mobile-calendar-highlighted-color: #ffffff !default;
+$ember-mobile-calendar-disabled-option-color: #999999 !default;
+$ember-mobile-calendar-multiple-selection-color: #333333 !default;
+
+// Borders
+$ember-mobile-calendar-border-color: #aaaaaa !default;
+$ember-mobile-calendar-focus-border-color: $ember-mobile-calendar-border-color !default;
+$ember-mobile-calendar-default-border: 1px solid $ember-mobile-calendar-border-color !default;
+$ember-mobile-calendar-default-focus-border: 1px solid $ember-mobile-calendar-focus-border-color !default;
+
+$ember-mobile-calendar-trigger-border: $ember-mobile-calendar-default-border !default;
+$ember-mobile-calendar-trigger-border-top: $ember-mobile-calendar-default-border !default;
+$ember-mobile-calendar-trigger-border-bottom: $ember-mobile-calendar-default-border !default;
+$ember-mobile-calendar-trigger-border-right: $ember-mobile-calendar-default-border !default;
+$ember-mobile-calendar-trigger-border-left: $ember-mobile-calendar-default-border !default;
+
+// Border radius
+$ember-mobile-calendar-trigger-default-border-radius: 3px !default;
+$ember-mobile-calendar-background-color: #ffffff !default;;
+$ember-mobile-calendar-line-height: 1.75!default;
+$ember-mobile-calendar-text-color: inherit !default;

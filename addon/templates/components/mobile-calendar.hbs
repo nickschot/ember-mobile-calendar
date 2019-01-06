@@ -1,25 +1,27 @@
 {{#basic-dropdown as |dropdown|}}
-  <div class="ember-power-calendar-input">
-    <input type="text"
-           data-ebd-id="{{dropdown.uniqueId}}-trigger"
-           class="form-control {{formFeedbackClass}}"
-           onclick={{dropdown.actions.toggle}}
-           value={{if _value (moment-format _value dateFormat)}}
-           id={{id}}
-           readonly>
+  <div class="ember-mobile-calendar-trigger">
+    <input
+      type="text"
+      data-ebd-id="{{dropdown.uniqueId}}-trigger"
+      onclick={{dropdown.actions.toggle}}
+      value={{if _value (moment-format _value dateFormat)}}
+      id={{id}}
+      readonly
+    />
 
     {{#if _value}}
-      <div class="ember-power-calendar-clear-btn" {{action "onSelect" dropdown.actions.close null}}>×</div>
+      <div class="ember-mobile-calendar-clear-btn" {{action "select" dropdown.actions.close null}}>×</div>
     {{/if}}
   </div>
 
-  {{#dropdown.content class="ember-power-calendar-dropdown"}}
-    {{!--to-elsewhere named='mask' send=(component 'app-mask' class='d-sm-none' onClick=dropdown.actions.close)--}}
+  {{#dropdown.content class="ember-mobile-calendar-dropdown"}}
+    {{!--to-elsewhere named="mask" send=(component "app-mask" class="d-sm-none" onClick=dropdown.actions.close)--}}
 
-    {{#power-calendar center=center
-                      onCenterChange=(action (mut center) value="date")
-                      selected=_value
-                      onSelect=(action "select" dropdown.actions.close)
+    {{#power-calendar
+      center=center
+      onCenterChange=(action (mut center) value="date")
+      selected=_value
+      onSelect=(action "select" dropdown.actions.close)
     as |calendar|}}
       <nav class="ember-power-calendar-nav">
         <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -12 "month"}}>&laquo;</button>
@@ -46,7 +48,10 @@
               maxDate=maxDate
             }}
           {{else}}
-            {{#power-calendar center=mpis.model.date selected=_value as |subCalendar|}}
+            {{#power-calendar
+              center=mpis.model.date
+              selected=_value
+            as |subCalendar|}}
               {{subCalendar.days
                 minDate=minDate
                 maxDate=maxDate
